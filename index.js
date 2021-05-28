@@ -1,11 +1,14 @@
 const express = require("express");
-const app = express();
+const dotenv = require('dotenv')
+
+const app = express()
+dotenv.config()
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.status(200).send("<h1>Belajar Docker</h1>");
+  res.status(200).send(`<h1>Belajar Docker</h1> <br> <h1>Hello, ${process.env.NAME}, ${process.env.CITY}</h1>`);
 });
 
-const PORT = 2000;
+const PORT = 8080;
 app.listen(PORT, () => `Server is running on PORT ${PORT}`);
